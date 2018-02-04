@@ -34,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
                 if(str_user.equals("") || str_pass.equals("")){
                     Toast.makeText(getApplicationContext(),"ป้อนข้อมูลไม่ครบ",Toast.LENGTH_SHORT).show();
                 }else{
-                    Toast.makeText(getApplicationContext(),"ข้อมูลถูกต้อง",Toast.LENGTH_SHORT).show();
+                    call_login call = new call_login(str_user, str_pass);
+                    call.execute("");
                 }
 
             }
