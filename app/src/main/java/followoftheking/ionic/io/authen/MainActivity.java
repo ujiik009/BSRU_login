@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     private EditText user_text, pass_text;
     private Button btn_login, btn_register;
@@ -39,6 +41,18 @@ public class MainActivity extends AppCompatActivity {
 
                     try{
                         final String res_server = call.get();
+                        JSONObject jsonObject = new JSONObject(res_server);
+                        final Boolean status = jsonObject.getBoolean("status");
+                        final String message = jsonObject.getString("message");
+
+                        if(status == true){
+                            Toast.makeText(getApplicationContext(),message.toString(),Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getApplicationContext(),message.toString(),Toast.LENGTH_SHORT).show();
+                        }
+
+
+
 
                         Toast.makeText(getApplicationContext(),res_server.toString(),Toast.LENGTH_SHORT).show();
                     }catch (Exception e){
