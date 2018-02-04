@@ -35,7 +35,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"ป้อนข้อมูลไม่ครบ",Toast.LENGTH_SHORT).show();
                 }else{
                     call_login call = new call_login(str_user, str_pass);
-                    call.execute("");
+                    call.execute("http://172.19.74.40/BSRU/login.php");
+
+                    try{
+                        final String res_server = call.get();
+
+                        Toast.makeText(getApplicationContext(),res_server.toString(),Toast.LENGTH_SHORT).show();
+                    }catch (Exception e){
+
+                    }
                 }
 
             }
